@@ -9,12 +9,19 @@ class Player
     if warrior.feel.captive? then
         warrior.rescue!
     else
-    warrior.attack! unless warrior.feel.empty?
-    if warrior.feel.empty? then
-        warrior.rest! if warrior.health < 20 && @health == warrior.health
-        warrior.walk! if warrior.health == 20 || @health > warrior.health
+      if warrior.feel.empty? then
+      if warrior.health < 20 and warrior.health >= @health then
+        warrior.rest!
+      else if warrior.health < @health and warrior.health < 13 then
+          warrior.walk!:backward
+          else
+          warrior.walk!
+          end
+      end
+    else
+    warrior.attack!
     end
+      @health = warrior.health
     end
-    @health = warrior.health
   end
 end
