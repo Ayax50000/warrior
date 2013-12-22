@@ -6,6 +6,9 @@ class Player
     # add your code here
     puts warrior.health
     warrior.feel
+    if warrior.feel.wall? then
+        warrior.pivot!
+    else
     if warrior.feel.captive? then
         warrior.rescue!
     else
@@ -20,6 +23,7 @@ class Player
       end
     else
     warrior.attack!
+    end
     end
       @health = warrior.health
     end
